@@ -1,0 +1,83 @@
+<meta charset="utf-8">
+<input>
+
+<button>?</button>
+
+<script>
+
+	function pulaLinha() {
+		document.write("<br>");
+	}
+
+	function mostra(frase) {
+		document.write(frase);
+		pulaLinha();
+	}
+	
+	var nome = prompt("Qual seu nome? ");
+	var maquina = alert("Olá " + nome + ", Sou Candy, Uma maquina inteligente");
+
+	var resposta = prompt("Sera que vc consegui adinha o numero da sorte?s/n");
+	if( resposta == "s"){
+		alert("Vou te da 3 tentativa com dicas.");
+	}else{
+		alert("Que peninha, achei vc tão inteligente, até a próxima");
+	}
+
+	function sorteia(){ // retorna o numero aliatorio até 100
+		return Math.round(Math.random()*100);
+	}
+
+	function sorteiaNumero(quantidade){
+		var segredos = [];
+		var numero = 1;
+		while(numero <= quantidade){
+
+			var numeroAleatorio = sorteia();
+			
+			if(numeroAleatorio !== 0){
+				var achou = false
+
+				for(var posicao = 0; posicao < segredos.length; posicao++){
+					if (segredos[posicao] == numeroAleatorio){
+						achou = true;
+						break;
+					}
+				}
+				if(achou == false){
+				segredos.push(numeroAleatorio);
+				numero++
+				}
+			}
+		}
+		return segredos;
+	}
+	var segredos = sorteiaNumeros(4);
+	console.log(segredos);
+
+	var input = document.querySelector("input");
+	input.focus();
+
+	function verifica() {
+
+		var achou = false;
+
+		for(var posicao= 0; posicao<segredos.length; posicao++){
+			if (input.value == segredos[posicao]) {
+			alert("Você Acertou!");
+			achou = true;
+			break;
+		}
+	}
+		if(achou == false){
+			alert("Voce Errou!");
+		}
+
+		input.value = "";
+		input.focus();
+	}
+
+	var button = document.querySelector("button");
+	button.onclick = verifica;
+
+</script>
