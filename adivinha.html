@@ -1,0 +1,33 @@
+<meta charset="utf-8">
+
+<script>
+	function pularLinha() {
+		
+		document.write("<br><br>");
+	}
+
+	function mostra(frase) {
+		document.write(frase);
+		pularLinha();
+	}
+
+	function sorteia(n){
+		return numeroPensado = Math.round(Math.random() * n);	
+		console.log(n);	
+	}
+
+	var numeroPensado = sorteia(10);
+	var tentativas = 1;
+
+	while(tentativas <= 3){
+		var adivinha = parseInt(prompt("Adivinha o numero pensado?" ));
+		if(adivinha == numeroPensado){
+			mostra("Acertou! Parabén!" + numeroPensado);
+			break;
+		}else {
+			mostra("Vc errou! ");
+		}
+		tentativas++;
+	}
+
+</script>
